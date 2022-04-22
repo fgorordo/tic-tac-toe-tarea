@@ -9,7 +9,7 @@
 
 
 // Tablero Actual
-let tablero = ["X", "X", "O", "X", "O", "O", "O", "O", "O"];
+let tablero = ["X", "X", "X", "X", "X", "X", "O", "O", "O"];
 
 // Definir quien gano o si hay un empate
 function verificarGanador(tablero) {
@@ -26,11 +26,11 @@ function verificarGanador(tablero) {
 //Adicional No Trampa
 
 // Contando X & O
-function contadorMovimientos(board) {
+function contadorMovimientos(tablero) {
   let cantidadDeX = 0
   let cantidadDeO = 0
 
-  board.forEach(elements => {
+  tablero.forEach(elements => {
     if (elements === 'X') {
       cantidadDeX++
     }else if(elements === 'O') {
@@ -39,11 +39,21 @@ function contadorMovimientos(board) {
   })
 
   if(cantidadDeX === cantidadDeO || cantidadDeX === cantidadDeO+1 || cantidadDeX === cantidadDeO-1) {
-    return('Es un resultado valido')
+    return true
   } else {
-    return('Es un resultado trucado')
+    return false
   }
 }
 
-console.log(verificarGanador(tablero))
-console.log(contadorMovimientos(tablero))
+function main (tablero) {
+  let ganador = verificarGanador(tablero)
+  let esValido = contadorMovimientos(tablero);
+
+  if (esValido === true) {
+    console.log(ganador)
+  }else {
+    console.log('Es un resultado trucado, por lo tanto no hay ganador')
+  }
+}
+
+main(tablero);
