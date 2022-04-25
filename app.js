@@ -9,7 +9,7 @@
 
 
 // Tablero Actual
-let tablero = ["X", "X", "X", "X", "X", "X", "O", "O", "O"];
+let tablero = ["X", "O", "X", "O", "O", "X", "X", "X", ""];
 
 // Definir quien gano o si hay un empate
 function verificarGanador(tablero) {
@@ -29,6 +29,9 @@ function verificarGanador(tablero) {
 function contadorMovimientos(tablero) {
   let cantidadDeX = 0
   let cantidadDeO = 0
+  
+
+  
 
   tablero.forEach(elements => {
     if (elements === 'X') {
@@ -40,8 +43,12 @@ function contadorMovimientos(tablero) {
 
   if(cantidadDeX === cantidadDeO || cantidadDeX === cantidadDeO+1 || cantidadDeX === cantidadDeO-1) {
     return true
-  } else {
+  } else if (cantidadDeX > cantidadDeO) {
+    console.log('Fault del jugador "X"')
     return false
+  }else if (cantidadDeX < cantidadDeO) {
+    console.log('Fault del jugador "O"')
+    return false;
   }
 }
 
